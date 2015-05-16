@@ -1,2 +1,9 @@
 /.project
+*.pydevproject
+*~
+*.pyc
+*.pyo
+/.settings
+/.idea
+*__pycache__
 .ipynb_checkpoints
