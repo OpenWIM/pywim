@@ -1,0 +1,12 @@
+psycopg2
+numpy
+scipy
+matplotlib
+pandas
+ipython
+pyzmq
+sqlalchemy
+statsmodels
+llvmlite
+numba
+scikit-learn
