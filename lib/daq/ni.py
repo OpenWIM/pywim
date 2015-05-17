@@ -1,12 +1,8 @@
 from datetime import datetime
 
 import time
-import multiprocessing as mp
-import os
 import sys
-import queue
 import numpy as np
-import pandas as pd
 
 try:
     import PyDAQmx as pydaq
@@ -14,7 +10,7 @@ except NotImplementedError:
     import pywim.lib.daq.generic as pydaq
 
 
-def analog_task(semaphore, semaphore_dev, counter, samples_queue, settings):
+def analog_task(settings):
     """
 
     """
@@ -45,25 +41,16 @@ def analog_task(semaphore, semaphore_dev, counter, samples_queue, settings):
         total_samples = pydaq.int32()
         data_size = samples_per_channel * number_of_channels
 
-        with counter.get_lock():
-            counter.value += 1
-
-        semaphore_dev.wait()
-
         print("\nStarting analog task %s." % settings['name'])
-        sys.stdout.flush()
 
         task.StartTask()
 
-        with counter.get_lock():
-            counter.value -= 1
-
-        semaphore.wait()
-
         total_samples.value = 0
 
-        while semaphore.is_set():
-            t = time.time()
+        run = True
+
+        while run:
+            run = yield
 
             data = np.zeros((data_size,), dtype=np.float64)
 
@@ -76,12 +63,11 @@ def analog_task(semaphore, semaphore_dev, counter, samples_queue, settings):
                 pydaq.byref(total_samples),
                 None
             )
-            samples_queue.put(data)
+            yield data
 
     except:
-        semaphore.clear()
+        pass
 
-    samples_queue.close()
     task.StopTask()
     task.ClearTask()
 
@@ -114,26 +100,18 @@ def digital_task(semaphore, semaphore_dev, counter, samples_queue, settings):
             **settings['parameters_sample_clock_time_di']
         )
 
-        with counter.get_lock():
-            counter.value += 1
-
-        semaphore_dev.wait()
-
         print("\nStarting digital task %s." % settings['name'])
         sys.stdout.flush()
 
         task.StartTask()
 
-        with counter.get_lock():
-            counter.value -= 1
-
-        semaphore.wait()
-
         total_samps.value = 0
         total_bytes.value = 0
 
-        while semaphore.is_set():
-            t = time.time()
+        run = True
+
+        while run:
+            run = yield
 
             data = np.zeros((data_size,), dtype=np.uint8 )
 
@@ -147,10 +125,9 @@ def digital_task(semaphore, semaphore_dev, counter, samples_queue, settings):
                 pydaq.byref(total_bytes),  # numBytesPerChan
                 None  # reserved
             )
-            samples_queue.put(data)
+            yield data
     except:
-        semaphore.clear()
+        pass
 
-    samples_queue.close()
     task.StopTask()
     task.ClearTask()

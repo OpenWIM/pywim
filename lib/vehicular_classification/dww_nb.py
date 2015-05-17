@@ -65,6 +65,7 @@ def layout_to_int(vehicle_layout):
     return np.array(layout_int, dtype=int)
 
 
+@nb.njit(nb.i8(nb.int8, nb.int8))
 def d_s(a, b):
     """
     d_s is a map from A X A -> R^+ and is called the Substitution Map. In
@@ -86,6 +87,7 @@ def d_s(a, b):
     )
 
 
+@nb.njit(nb.i8(nb.int8))
 def d_i(a):
     """
     d_i(.) is a map from A -> R^+ and is called the Insertion Map. The quantity
@@ -103,6 +105,7 @@ def d_i(a):
     )
 
 
+@nb.njit(nb.i8(nb.int8))
 def d_e(a):
     """
     d_e(.) is a map from A -> R^+ and is called the Deletion or Erasure Map.
@@ -121,6 +124,7 @@ def d_e(a):
     )
 
 
+@nb.njit(nb.i8(nb.int8, nb.int8, nb.int8, nb.int8))
 def d_t(a, b, c, d):
     """
     d t (.,.) is a map from A 2 X A 2 -> R^+ called the Transposition Map. The
@@ -137,6 +141,7 @@ def d_t(a, b, c, d):
     )
 
 
+@nb.njit()
 def D(x, y, Z):
     """
 
