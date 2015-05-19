@@ -16,15 +16,15 @@ def gen_slope():
 
 
 def gen_synthetic_analog_data(
-    sample_rate: int, total_seconds: float, time_delay: float
+    sample_rate: int, total_seconds: float, time_delay: float, noise_p=400
 ):
     """
 
     :param sample_rate:
     :param total_seconds:
     :param time_delay:
+    :param noise_p:
     :return:
-
     """
     ts = 1/sample_rate
     total_points = total_seconds*sample_rate
@@ -38,7 +38,8 @@ def gen_synthetic_analog_data(
         j = i*10
         y[j-200:j+200] = gen_slope()
 
-    y += np.random.random(total_points)/400.  # noise
+    y += np.random.random(total_points)/noise_p  # noise
+    y += np.random.randint(0, 100)/70  # changes baseline
     return pd.Series(y, index=x)
 
 
