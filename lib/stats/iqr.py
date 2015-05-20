@@ -8,7 +8,6 @@ def iqr(data: pd.Series, min_value=None) -> (float, float):
     IQR: Q3-Q1
     Outlier: Q3 + 1.5*(IQR) > DATA < Q1 - 1.5*IQR
 
-    :param data:
     :param data: pd.Series
     :return: mask considering lower bound and upper bound
 
