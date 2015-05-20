@@ -12,11 +12,12 @@ def gen_slope():
         f(i) for i in np.linspace(-3, 3, 400)
     ]
     slope -= min(slope)
+
     return slope
 
 
 def gen_synthetic_analog_data(
-    sample_rate: int, total_seconds: float, time_delay: float, noise_p=400
+    sample_rate: int, total_seconds: float, time_delay: float, noise_p=200
 ):
     """
 
@@ -26,13 +27,12 @@ def gen_synthetic_analog_data(
     :param noise_p:
     :return:
     """
-    ts = 1/sample_rate
     total_points = total_seconds*sample_rate
     x = np.linspace(0, total_seconds, total_points)
     y = np.zeros(total_points)
 
     delay = int((time_delay/10) * sample_rate)
-    axl = [delay + 500]
+    axl = [delay + 200]
 
     for i in [delay] + axl:
         j = i*10
@@ -54,13 +54,12 @@ def gen_synthetic_digital_data(
     :return:
 
     """
-    ts = 1/sample_rate
     total_points = total_seconds*sample_rate
     x = np.linspace(0, total_seconds, total_points)
     y = np.zeros(total_points)
 
     delay = int((time_delay/10) * sample_rate)
-    axles = [delay*10 - 3000, delay*10 + 7000]
+    axles = [delay*10 - 1000, delay*10 + 3000]
 
     y[axles[0]:axles[1]] = 1
     y += np.random.random(total_points)/400.  # noise
@@ -77,6 +76,9 @@ def byref(arg):
 
 
 class Task:
+    def CreateAIVoltageChan(self, **kargs):
+        pass
+
     def CfgSampClkTiming(self, **kargs):
         pass
 
