@@ -15,9 +15,9 @@ from pywim.lib.daq.generic import (
 
 
 def test():
-    ts_analog = gen_synthetic_analog_data(5000, 3.0, 1)
+    ts_analog = gen_synthetic_analog_data(2000, 3.0, 1)
     ts_analog.plot()
-    ts_digital = gen_synthetic_digital_data(5000, 3.0, 1)
+    ts_digital = gen_synthetic_digital_data(2000, 3.0, 1)
     ts_digital.plot()
     plt.show()
 
