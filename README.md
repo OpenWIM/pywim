@@ -6,9 +6,8 @@ WIM research and algorithms (in Python language) using code files and science no
 
 Video:
 
-* https://www.youtube.com/playlist?list=PLP2w-3gT-zJroETkFWA9IrH_DEWx7bmXk
+* http://tinyurl.com/pjbn8x3
 
 Science Notebook:
 
-* http://nbviewer.ipython.org/github/OpenWIM/pywim/blob/master/docs/presentations/scipyla2015/PyWIM.ipynb
-
+* http://tinyurl.com/qatrohk
