@@ -8,5 +8,6 @@ pyzmq
 sqlalchemy
 statsmodels
 llvmlite
-numba
 scikit-learn
+jupyter
+numba
