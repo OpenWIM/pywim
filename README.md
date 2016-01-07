@@ -8,10 +8,10 @@ https://osf.io/9jw3h/?view_only=8a851e8f02594b93be6ceee8804158a3
 
 ## PyWIM - SciPy Latin America - Argentina - 2015
 
-Video:
+**Video**:
 
 * http://tinyurl.com/pjbn8x3
 
-Science Notebook:
+**Science Notebook**:
 
 * http://tinyurl.com/qatrohk
