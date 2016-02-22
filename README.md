@@ -1,5 +1,7 @@
 # OpenWIM - PyWIM
 
+[![Join the chat at https://gitter.im/OpenWIM/pywim](https://badges.gitter.im/OpenWIM/pywim.svg)](https://gitter.im/OpenWIM/pywim?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 WIM research and algorithms (in Python language) using code files and science notebooks with examples, explanations and specifications.
 
 ## OpenWIM - Papers
