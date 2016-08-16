@@ -6,15 +6,15 @@ PyWIM
 .. image:: https://img.shields.io/pypi/v/pywim.svg
         :target: https://pypi.python.org/pypi/pywim
 
-.. image:: https://img.shields.io/travis/xmnlab/pywim.svg
-        :target: https://travis-ci.org/xmnlab/pywim
+.. image:: https://img.shields.io/travis/OpenWIM/pywim.svg
+        :target: https://travis-ci.org/OpenWIM/pywim
 
 .. image:: https://readthedocs.org/projects/pywim/badge/?version=latest
         :target: https://pywim.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/xmnlab/pywim/shield.svg
-     :target: https://pyup.io/repos/github/xmnlab/pywim/
+.. image:: https://pyup.io/repos/github/openwim/pywim/shield.svg
+     :target: https://pyup.io/repos/github/openwim/pywim/
      :alt: Updates
 
 
