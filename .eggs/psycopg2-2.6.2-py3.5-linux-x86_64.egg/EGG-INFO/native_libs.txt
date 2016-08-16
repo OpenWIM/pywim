@@ -1,0 +1,1 @@
+psycopg2/_psycopg.cpython-35m-x86_64-linux-gnu.so
