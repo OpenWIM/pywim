@@ -17,7 +17,7 @@ before_install:
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - conda update conda --yes
-  - conda create -n pywim --yes python=$TRAVIS_PYTHON_VERSION environment --file requirements.txt
+  - conda create -n pywim --yes python=$TRAVIS_PYTHON_VERSION --file requirements.txt
   - source activate pywim
 
 # command to run tests, e.g. python setup.py test
