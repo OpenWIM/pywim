@@ -21,8 +21,8 @@ install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
   - conda config --add channels conda-forge 
+  - conda update --all
 
   # Useful for debugging any issues with conda
   - conda info -a
@@ -46,4 +46,3 @@ deploy:
   on:
     tags: true
     repo: OpenWIM/pywim
-    condition: $TOXENV == py35
