@@ -1,4 +1,4 @@
-name: pywim2
+name: pywim
 channels:
 - conda-forge
 - defaults
@@ -135,5 +135,5 @@ dependencies:
   - wcwidth==0.1.7
   - wheel==0.29.0
   - widgetsnbextension==1.2.6
-prefix: /home/xmn/anaconda3/envs/pywim2
+prefix: /home/xmn/anaconda3/envs/pywim
 
