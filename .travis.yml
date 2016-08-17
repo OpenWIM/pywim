@@ -9,12 +9,16 @@ env:
   - TOXENV=py34
 
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq llvm
-  - sudo updatedb
-  - export LLVM_CONFIG=$(sudo locate llvm-config|grep config$)
+  - wget http://repo.continuum.io/miniconda/Miniconda3-4.1.11-Linux-x86_64.sh -O miniconda.sh
+  - chmod +x miniconda.sh
+  - ./miniconda.sh -b -p /home/travis/miniconda
+  - export PATH=/home/travis/miniconda/bin:$PATH
+  - echo 'channels:\n - conda-forge\n - defaults' > /home/travis/.condarc
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: 
+install:
+  - conda update conda --yes
+  - conda create -n pywim --yes pip python=$TRAVIS_PYTHON_VERSION numpy scipy numba mkl matplotlib
+  - source activate pywim
   - pip install -U tox
 
 # command to run tests, e.g. python setup.py test
