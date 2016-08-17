@@ -20,6 +20,7 @@ requirements = [
     'statsmodels',
     'llvmlite',
     'scikit-learn',
+    'peakutils',
     'jupyter',
     'numba'
 ]

@@ -2,7 +2,7 @@ Metadata-Version: 1.1
 Name: pywim
 Version: 0.1.0
 Summary: Open algorithms to use in WIM research
-Home-page: https://github.com/xmnlab/pywim
+Home-page: https://github.com/OpenWIM/pywim
 Author: Ivan Ogasawara
 Author-email: ivan.ogasawara@gmail.com
 License: MIT license
@@ -14,15 +14,15 @@ Description: ===============================
         .. image:: https://img.shields.io/pypi/v/pywim.svg
                 :target: https://pypi.python.org/pypi/pywim
         
-        .. image:: https://img.shields.io/travis/xmnlab/pywim.svg
-                :target: https://travis-ci.org/xmnlab/pywim
+        .. image:: https://img.shields.io/travis/OpenWIM/pywim.svg
+                :target: https://travis-ci.org/OpenWIM/pywim
         
         .. image:: https://readthedocs.org/projects/pywim/badge/?version=latest
                 :target: https://pywim.readthedocs.io/en/latest/?badge=latest
                 :alt: Documentation Status
         
-        .. image:: https://pyup.io/repos/github/xmnlab/pywim/shield.svg
-             :target: https://pyup.io/repos/github/xmnlab/pywim/
+        .. image:: https://pyup.io/repos/github/openwim/pywim/shield.svg
+             :target: https://pyup.io/repos/github/openwim/pywim/
              :alt: Updates
         
         
@@ -78,10 +78,6 @@ Classifier: Development Status :: 2 - Pre-Alpha
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Natural Language :: English
-Classifier: Programming Language :: Python :: 2
-Classifier: Programming Language :: Python :: 2.6
-Classifier: Programming Language :: Python :: 2.7
 Classifier: Programming Language :: Python :: 3
-Classifier: Programming Language :: Python :: 3.3
 Classifier: Programming Language :: Python :: 3.4
 Classifier: Programming Language :: Python :: 3.5

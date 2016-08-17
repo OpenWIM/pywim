@@ -4,9 +4,9 @@
 language: python
 python: 3.5
 
-env:
-  - TOXENV=py35
-  - TOXENV=py34
+#env:
+#  - TOXENV=py35
+#  - TOXENV=py34
 
 before_install:
   - wget http://repo.continuum.io/miniconda/Miniconda3-4.1.11-Linux-x86_64.sh -O miniconda.sh
@@ -17,8 +17,6 @@ before_install:
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - conda update conda --yes
-  - conda create -n pywim --yes pip python=$TRAVIS_PYTHON_VERSION numpy scipy numba mkl matplotlib
-  - source activate pywim
 
 # command to run tests, e.g. python setup.py test
 script: python setup.py test
