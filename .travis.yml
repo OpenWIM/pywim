@@ -19,10 +19,9 @@ install:
   - conda update conda --yes
   - conda create -n pywim --yes pip python=$TRAVIS_PYTHON_VERSION numpy scipy numba mkl matplotlib
   - source activate pywim
-  - pip install -U tox
 
 # command to run tests, e.g. python setup.py test
-script: tox -e ${TOXENV}
+script: python setup.py test
 
 # After you create the Github repo and add it to Travis, run the
 # travis_pypi_setup.py script to finish PyPI deployment setup
