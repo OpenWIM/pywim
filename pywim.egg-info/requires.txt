@@ -8,5 +8,6 @@ sqlalchemy
 statsmodels
 llvmlite
 scikit-learn
+peakutils
 jupyter
 numba
