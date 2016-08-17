@@ -9,21 +9,8 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [
-    'psycopg2',
-    'numpy',
-    'scipy',
-    'matplotlib',
-    'pandas',
-    'ipython',
-    'sqlalchemy',
-    'statsmodels',
-    'llvmlite',
-    'scikit-learn',
-    'peakutils',
-    'jupyter',
-    'numba'
-]
+with open('requirements.txt') as f:
+    requirements = list(filter(lambda v: v, f.read().split('\n')))
 
 test_requirements = [
     # TODO: put package test requirements here

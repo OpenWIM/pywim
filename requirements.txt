@@ -1,1 +1,13 @@
+psycopg2
 numpy
+scipy
+matplotlib
+pandas
+ipython
+sqlalchemy
+statsmodels
+llvmlite
+scikit-learn
+peakutils
+jupyter
+numba
