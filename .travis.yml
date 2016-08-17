@@ -13,7 +13,7 @@ before_install:
   - chmod +x miniconda.sh
   - ./miniconda.sh -b -p /home/travis/miniconda
   - export PATH=/home/travis/miniconda/bin:$PATH
-  - echo 'channels:\n - conda-forge\n - defaults' > /home/travis/.condarc
+  - printf 'channels:\n  - conda-forge\n  - defaults' > /home/travis/.condarc
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - conda update conda --yes
