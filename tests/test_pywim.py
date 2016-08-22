@@ -12,7 +12,7 @@ Tests for `pywim` module.
 import sys
 import unittest
 
-from pywim import pywim
+from pywim import *
 
 
 
