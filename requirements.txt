@@ -5,7 +5,7 @@ matplotlib
 pandas
 ipython
 sqlalchemy
-statsmodels
+statsmodels==0.6.1
 llvmlite
 scikit-learn
 jupyter
