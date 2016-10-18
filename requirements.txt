@@ -1,6 +1,6 @@
 psycopg2
 numpy
-scipy
+scipy==0.18.1
 matplotlib
 pandas
 ipython
