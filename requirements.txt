@@ -9,4 +9,4 @@ statsmodels
 llvmlite
 scikit-learn
 jupyter
-numba
+numba==0.29.0
