@@ -2,7 +2,7 @@ psycopg2
 numpy
 scipy
 matplotlib
-pandas
+pandas==0.19.0
 ipython
 sqlalchemy
 statsmodels==0.6.1
