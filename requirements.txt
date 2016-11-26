@@ -7,6 +7,6 @@ ipython
 sqlalchemy
 statsmodels==0.6.1
 llvmlite
-scikit-learn
+scikit-learn==0.18
 jupyter
 numba==0.29.0
