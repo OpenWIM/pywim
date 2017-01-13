@@ -60,3 +60,9 @@ target/
 
 # Jupyter
 .ipynb_checkpoints
+
+# pycharm
+/.idea/*
+
+# conda
+/pywim/bin

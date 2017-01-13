@@ -1,4 +1,3 @@
-psycopg2
 numpy
 scipy
 matplotlib
@@ -10,3 +9,4 @@ llvmlite
 scikit-learn
 jupyter
 numba
+h5py
