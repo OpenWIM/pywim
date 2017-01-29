@@ -5,6 +5,7 @@ import pandas as pd
 
 
 def chauvenet(y, mean=None, stdv=None) -> np.Array:
+    """
     #-----------------------------------------------------------
     # Input:  NumPy arrays x, y that represent measured data
     #         A single value of a mean can be entered or a
@@ -37,7 +38,6 @@ def chauvenet(y, mean=None, stdv=None) -> np.Array:
     # xf, yf are cleaned versions of x and y and with the valid entries
     # xr, yr are the rejected values from array x and y
     #-----------------------------------------------------------
-    """
     source: https://www.astro.rug.nl/software/kapteyn/
     :param x:
     :param y:
