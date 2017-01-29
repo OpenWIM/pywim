@@ -17,7 +17,7 @@ def create_new_file(
 
     :param path:
     :param date_time:
-    :param collection_type:
+    :param collection_type: day|week|month|year|full
     :param site_id:
     :param lane_id:
     :return: h5py.File
@@ -43,6 +43,7 @@ def create_data_set(
     distance_between_sensors: list=None,
     sensor_type: str=None,
     sensors_layout: str=None,
+    channel_configuration: str=None,
     **kwargs
 ) -> h5py.Dataset:
     """
@@ -58,6 +59,9 @@ def create_data_set(
     :param distance_between_sensors: (e.g. [1.0, 1.5, 2.0])
     :param sensor_type: (e.g. quartz, polymer, ceramic, mixed)
     :param sensors_layout: (e.g. |/|\|<|>|=|)
+    :param channel_configuration: (this is a, optional attribute, it is
+        required just when sensor type is mixed,
+        e.g. "{'a0': 'polymer', 'a1': 'ceramic'})"
     :param kwargs:
     :return:
     """
@@ -87,6 +91,7 @@ def create_data_set(
     dset.attrs['distance_between_sensors'] = distance_between_sensors
     dset.attrs['sensor_type'] = sensor_type
     dset.attrs['sensors_layout'] = sensors_layout
+    dset.attrs['channel_configuration'] = channel_configuration
 
     if kwargs:
         for k, v in kwargs.items():
