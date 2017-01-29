@@ -6,11 +6,18 @@ import numpy as np
 import pandas as pd
 
 
-def gen_slope(width: int=400):
-    f = lambda x: (-(x)**2 + 7)
+def _slope_equation(x: float):
+    """
 
+    :param x:
+    :return:
+    """
+    return (-(x)**2 + 7)
+
+
+def gen_slope(width: int=400):
     slope = [
-        f(i) for i in np.linspace(-3, 3, width)
+        _slope_equation(i) for i in np.linspace(-3, 3, width)
     ]
     slope -= min(slope)
 
@@ -89,4 +96,3 @@ def gen_truck_raw_data(
         data['a{}'.format(i)] = y
 
     return pd.DataFrame(data, index=x)
-

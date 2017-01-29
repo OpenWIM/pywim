@@ -1,16 +1,16 @@
 """
-Nmrglue is a module for working with NMR data in Python. 
-When used with the NumPy, SciPy, and matplotlib packages nmrglue provides a 
-robust environment for rapidly developing new methods for processing, 
-analyzing, and visualizing NMR data. Nmrglue also provides a 
+Nmrglue is a module for working with NMR data in Python.
+When used with the NumPy, SciPy, and matplotlib packages nmrglue provides a
+robust environment for rapidly developing new methods for processing,
+analyzing, and visualizing NMR data. Nmrglue also provides a
 framework for connecting existing NMR software packages.
 
-A collection of NMR processing functions for filtering, smoothing, and 
+A collection of NMR processing functions for filtering, smoothing, and
 correcting spectral baselines.
 
-J.J. Helmus, C.P. Jaroniec, Nmrglue: 
-An open source Python package for the analysis of multidimensional NMR data, 
-J. Biomol. NMR 2013, 55, 355-367. 10.1007/s10858-013-9718-x.  
+J.J. Helmus, C.P. Jaroniec, Nmrglue:
+An open source Python package for the analysis of multidimensional NMR data,
+J. Biomol. NMR 2013, 55, 355-367. 10.1007/s10858-013-9718-x.
 
 @see: https://code.google.com/p/nmrglue/
 
@@ -34,15 +34,15 @@ def base(data, nl, nw=0):
     """
 
     if data.ndim == 1:
-        data = data-calc_bl_linear(data, nl, nw)
+        data -= calc_bl_linear(data, nl, nw)
     else:   # for 2D array loop over traces
         for i, vec in enumerate(data):
-            data[i] = data[i]-calc_bl_linear(vec, nl, nw)
+            data[i] -= calc_bl_linear(vec, nl, nw)
     return data
 
 
 def calc_bl_linear(x, nl, nw=0):
-    """ 
+    """
     Calculate a baseline using linear approximation between nodes
 
     Parameters:
@@ -72,15 +72,15 @@ def cbf(data, last=10, apply=slice(None)):
     Parameters:
 
     * data  Array of spectral data.
-    * last  Percent of -1 axis used to calculate correction. 
-    * apply Slice describing 0th-axis region(s) to apply correction to. 
+    * last  Percent of -1 axis used to calculate correction.
+    * apply Slice describing 0th-axis region(s) to apply correction to.
             Ignored in 1D data.
 
     """
     # calculate the correction
     n = data.shape[-1]*last/100.+1.
     corr = data[..., int(-n):].sum(axis=-1)/n
-    
+
     # apply correction
     if data.ndim == 2:
         data[apply] = data[apply] - np.array([corr]).transpose()[apply]
@@ -129,7 +129,7 @@ def med(data, mw=24, sf=16, sigma=5.0):
 
     """
     if data.ndim == 1:
-        data = data - calc_bl_med(data, mw, sf, sigma)
+        data -= calc_bl_med(data, mw, sf, sigma)
     else:
         for i, vec in enumerate(data):
             data[i] = vec - calc_bl_med(vec, mw, sf, sigma)
@@ -177,7 +177,7 @@ def sol_general(data, _filter, w=16, mode='same'):
 
     Algorithm described in:
     Marion et al. JMR 1989 84 425-430
-    
+
     Parameters:
 
     * data   Array of spectral data.
@@ -192,7 +192,7 @@ def sol_general(data, _filter, w=16, mode='same'):
 
 
 def sol_boxcar(data, w=16, mode='same'):
-    """ 
+    """
     Solvent filter with boxcar filter.
 
     Parameters:
@@ -207,7 +207,7 @@ def sol_boxcar(data, w=16, mode='same'):
 
 
 def sol_sine(data, w=16, mode='same'):
-    """ 
+    """
     Solvent filter with sine-bell filter.
 
     Parameters:
@@ -222,7 +222,7 @@ def sol_sine(data, w=16, mode='same'):
 
 
 def sol_sine2(data, w=16, mode='same'):
-    """ 
+    """
     Solvent filter with square sine-bell filter.
 
     Parameters:
@@ -237,7 +237,7 @@ def sol_sine2(data, w=16, mode='same'):
 
 
 def sol_gaussian(data, w=16, mode='same'):
-    """ 
+    """
     Solvent filter with square gaussian filter.
 
     Parameters:
@@ -247,73 +247,5 @@ def sol_gaussian(data, w=16, mode='same'):
     * mode   mode for output ('valid','same', or 'full')
 
     """
-    _filter = scipy.signal.gaussian(w,w/2.)
+    _filter = scipy.signal.gaussian(w, w/2.)
     return sol_general(data, _filter, w=w, mode=mode)
-
-
-# Polynomial Solvent Subtraction
-
-def poly_td(data):
-    """ 
-    Polynomial time domain solvent subtraction
-
-    From NMRPipe paper(appendix):
-
-    when used with the argument -time, fits all data points to a polynomial,
-    which is then subtracted from the original data.  It is intended to fit
-    and subtract low-freqency solvent signal in the FID, a procedure that 
-    often causes less distortions than time-domain convolution methods.
-    By default, a fourth-order polynomials is used.  For speed successive
-    averages of regions are usually fit, rather than fitting all of the data.
-
-    Alg:
-
-    1. Calculate average of blocks
-    2. Fit these averages to polynomial (block parameters)
-    3. Back out "real" polynomial parameters from these block parameters
-    4. Subtract off the polynomial from data
-
-    """
-    # XXX 
-    pass
-
-
-def poly_fd(data):
-    """ 
-    Polynomial frequency domain baseline correction
-
-    From NMRPipe paper (appendix):
-    
-    applies a polynomial baseline correction of the order specified by 
-    argument -ord via an automated base-line detection method when used
-    with argument -auto.  The defauly is a forth-order polynomial. The 
-    automated base-line mode works as follows: a copy of a given vector is 
-    divided into a series of adjacent sections, typically eight points wide.
-    The average value of each section is subtracted from all points in that 
-    section, to generate a 'centered' vector.  The intensities of the entire
-    centered vector are sorted, and the standard deviation of the noise is
-    estimated under the assumption that a given fraction (typically about
-    30%) of the smallest intensities belong to the base-line, and that the 
-    noise is normally distributed.  This noise estimate is multiplied by a 
-    constant, typically about 1.5, to yield a classification threshold.  
-    Then, each section in the centered vector is classified as base line only
-    if its standard deviation does not exceed the threshold.  These 
-    classifications are used to correct the original vector.
-
-    Alg:
-
-    1. Divide into 'blocks'
-    2. Center each block and create centered vector
-    3. Calculate intensity (abs) of each centered vector
-    4. Sort intensities, lower 30% belong to baseline
-    5. Fit base line intensities to Normal distribution, gives estimation
-       of standard deviation (std) of noise
-    6. Classification threshold set to 1.5*std
-    7. Qualify each block in centered vector as baseline only 
-       (its std < thres) or not (std > thres)
-    8. Fit baseline only points to polynomial and substract off
-
-
-    """
-    # XXX
-    pass

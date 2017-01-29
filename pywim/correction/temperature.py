@@ -120,7 +120,8 @@ class Temperature:
         THE INFLUENCE OF TEMPERATURE ON ERRORS OF WIM SYSTEMS
         EMPLOYING PIEZOELECTRIC SENSORS
 
-        Janusz Gajda 1) , Ryszard Sroka 1) , Tadeusz Zeglen 1) , Piotr Burnos 1)
+        Janusz Gajda 1) , Ryszard Sroka 1) , Tadeusz Zeglen 1) ,
+        Piotr Burnos 1)
         1) AGH University of Science and Technology, Al. A. Mickiewicza 30,
         30-059 Krakow, Poland (*jgajda@agh.edu.pl)
 

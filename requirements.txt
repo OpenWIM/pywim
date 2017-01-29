@@ -10,3 +10,4 @@ scikit-learn
 jupyter
 numba
 h5py
+peakutils
