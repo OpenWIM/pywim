@@ -34,6 +34,7 @@ def create_new_file(
 def create_data_set(
     data_file: h5py.File,
     data: pd.DataFrame,
+    sample_rate: int=None,
     date_time: datetime=datetime.now(),
     site_id: str='000',
     lane_id: str='00',
@@ -50,6 +51,7 @@ def create_data_set(
 
     :param data_file:
     :param data:
+    :param sample_rate: (e.g. 2000)
     :param date_time: (e.g. 2017-49-04 00:49:36)
     :param site_id: (e.g. 001)
     :param lane_id: (e.g. 01)
@@ -82,6 +84,7 @@ def create_data_set(
     for k in data.keys():
         dset[k] = data[k]
 
+    dset.attrs['sample_rate'] = sample_rate
     dset.attrs['date_time'] = date_time.strftime('%Y-%M-%d %H:%M:%S')
     dset.attrs['site_id'] = site_id
     dset.attrs['lane_id'] = lane_id
