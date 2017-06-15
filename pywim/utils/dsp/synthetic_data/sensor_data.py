@@ -6,13 +6,14 @@ import numpy as np
 import pandas as pd
 
 
-def _slope_equation(x: float):
+def _slope_equation(x: float, c: float=2.5):
     """
 
     :param x:
+    :param c: normalization coefficient
     :return:
     """
-    return (-(x)**2 + 7)
+    return (-(x)**2)/c
 
 
 def gen_slope(width: int=400):

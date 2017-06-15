@@ -11,3 +11,4 @@ jupyter
 numba
 h5py
 peakutils
+jupyter_contrib_nbextensions
