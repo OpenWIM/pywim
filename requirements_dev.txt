@@ -1,10 +1,7 @@
-pip
-bumpversion
-wheel
-watchdog
 flake8
 coverage
 Sphinx
 cryptography
 PyYAML
 pycodestyle
+cite2c
