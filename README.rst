@@ -13,7 +13,7 @@ PyWIM
         :target: https://pywim.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-Open algorithms to use in WIM research
+Open algorithms to use in WIM research.
 
 
 * Free software: MIT license
