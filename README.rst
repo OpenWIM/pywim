@@ -29,7 +29,3 @@ PyWIM - SciPy Latin America - Argentina - 2015
 
 * http://tinyurl.com/pjbn8x3
 
-Features
---------
-
-* TODO

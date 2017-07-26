@@ -3,5 +3,3 @@ coverage
 Sphinx
 cryptography
 PyYAML
-pycodestyle
-cite2c

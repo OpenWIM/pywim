@@ -16,9 +16,20 @@ test_requirements = [
     # TODO: put package test requirements here
 ]
 
+
+def get_version():
+    """Obtain the version number"""
+    import imp
+    import os
+    mod = imp.load_source(
+        'version', os.path.join('pywim', '__init__.py')
+    )
+    return mod.__version__
+
+
 setup(
     name='pywim',
-    version='0.1.0',
+    version=get_version(),
     description="Open algorithms to use in WIM research",
     long_description=readme + '\n\n' + history,
     author="Ivan Ogasawara",
