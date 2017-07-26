@@ -25,6 +25,7 @@ install:
   # Replace dep1 dep2 ... with your dependencies
   - conda create -n pywim python=$TRAVIS_PYTHON_VERSION
   - source activate pywim
+  - conda install --file requirements.txt
   - python setup.py install
 
 # command to run tests, e.g. python setup.py test
