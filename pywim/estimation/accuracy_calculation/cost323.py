@@ -1,5 +1,5 @@
 from scipy.stats import norm
-from scipy.optimize import root, fsolve
+from scipy.optimize import fsolve
 from scipy import stats
 
 import numpy as np
@@ -199,13 +199,13 @@ def calc_confidence_level(data: pd.DataFrame) -> pd.DataFrame:
     def _calc(v: pd.Series) -> pd.Series:
         return 100 * (
             1 - stats.t.sf(
-                (v.d / v['std'] - v['mean'] / v['std']) - stats.t.isf(0.05 / 2,
-                                                                      v.number - 1) /
+                (v.d / v['std'] - v['mean'] / v['std']) -
+                stats.t.isf(0.05 / 2, v.number - 1) /
                 np.sqrt(v.number),
                 v.number - 1
             ) - stats.t.sf(
-                (v.d / v['std'] + v['mean'] / v['std']) - stats.t.isf(0.05 / 2,
-                                                                      v.number - 1) /
+                (v.d / v['std'] + v['mean'] / v['std']) -
+                stats.t.isf(0.05 / 2, v.number - 1) /
                 np.sqrt(v.number), v.number - 1
             )
         )
@@ -271,13 +271,14 @@ def solver_min_tolerance(data: pd.DataFrame) -> pd.DataFrame:
         _factor = stats.t.isf(0.05 / 2, _number - 1) / np.sqrt(_number)
         _dof = _number - 1
 
-        func = lambda _min_tolerance: _min_confidence - 100 * (
-            1 -
-            stats.t.sf(
-                (_min_tolerance / _std - _mean / _std) - _factor, _dof) -
-            stats.t.sf(
-                (_min_tolerance / _std + _mean / _std) - _factor, _dof)
-        )
+        def func(_min_tolerance):
+            return _min_confidence - 100 * (
+                1 -
+                stats.t.sf(
+                    (_min_tolerance / _std - _mean / _std) - _factor, _dof) -
+                stats.t.sf(
+                    (_min_tolerance / _std + _mean / _std) - _factor, _dof)
+            )
 
         try:
             data.loc[i, 'min_tolerance'] = fsolve(func, [1])[0]

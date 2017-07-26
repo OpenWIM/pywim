@@ -1,5 +1,6 @@
 # Demonstrate criterion of Chauvenet to exclude poor data
-from scipy.special import erf, erfc
+from scipy.special import erfc
+
 import numpy as np
 import pandas as pd
 

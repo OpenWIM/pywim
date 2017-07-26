@@ -9,16 +9,40 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-with open('requirements.txt') as f:
-    requirements = list(filter(lambda v: v, f.read().split('\n')))
+requirements = [
+    'numpy',
+    'scipy',
+    'matplotlib',
+    'pandas',
+    'ipython',
+    'sqlalchemy',
+    'statsmodels',
+    'llvmlite',
+    'scikit-learn',
+    'jupyter',
+    'numba',
+    'h5py',
+    'peakutils'
+]
 
 test_requirements = [
     # TODO: put package test requirements here
 ]
 
+
+def get_version():
+    """Obtain the version number"""
+    import imp
+    import os
+    mod = imp.load_source(
+        'version', os.path.join('pywim', '__init__.py')
+    )
+    return mod.__version__
+
+
 setup(
     name='pywim',
-    version='0.1.0',
+    version=get_version(),
     description="Open algorithms to use in WIM research",
     long_description=readme + '\n\n' + history,
     author="Ivan Ogasawara",

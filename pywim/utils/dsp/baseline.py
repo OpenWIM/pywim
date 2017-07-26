@@ -159,7 +159,7 @@ def calc_bl_med(x, mw, sf, sigma):
     e = np.ma.masked_array(x, mask)
 
     # fill in the median vector
-    half_mw = mw/2
+    # half_mw = mw/2
     m = scipy.ndimage.median_filter(e, mw+1, mode="mirror")
     # using the median_filter might give slightly different results than
     # described algorithm but is MUCH faster
